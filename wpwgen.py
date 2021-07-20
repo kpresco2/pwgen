@@ -2,11 +2,16 @@ from flask import Flask, render_template, url_for,flash, redirect, request, g
 from forms import GetArgs
 from datetime import date, datetime
 import random
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env
 
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '4526e3e80fd9163ec48ca0f2adac6f2c57408a276666687f'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
+
 from flask import flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, SubmitField, SelectField, PasswordField, IntegerField
