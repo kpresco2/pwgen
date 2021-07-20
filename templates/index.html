@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Password Generator</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/simple-sidebar.css?rnd=104" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="list-group">
+      <form  action="" method="post">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <div>
+            <h3 class=text-center>Parameters</h3>
+          </div>
+          <div class="form-group form-group-sm">
+            {{ form.digit_cnt.label(class="form-control-label form-control-sm form-pad-sm") }}
+            {{ form.digit_cnt(class="form-control  form-control-sm form-pad-sm") }}
+            {% for error in form.digit_cnt.errors %}
+              <small class="form-text text-muted ">
+                {{ error }}
+              </small>
+            {% endfor %}
+          </div>
+          <div class="form-group form-group-sm">
+            {{ form.symbol_cnt.label(class="form-control-label form-control-sm form-pad-sm") }}
+            {{ form.symbol_cnt(class="form-control  form-control-sm form-pad-sm") }}
+            {% for error in form.symbol_cnt.errors %}
+              <small class="form-text text-muted ">
+                {{ error }}
+              </small>
+            {% endfor %}
+          </div>
+          <div class="form-group form-group-sm">
+            {{ form.upper_cnt.label(class="form-control-label form-control-sm form-pad-sm") }}
+            {{ form.upper_cnt(class="form-control  form-control-sm form-pad-sm") }}
+            {% for error in form.upper_cnt.errors %}
+              <small class="form-text text-muted ">
+                {{ error }}
+              </small>0
+            {% endfor %}
+          </div>
+          <div class="form-group form-group-sm">
+            {{ form.lower_cnt.label(class="form-control-label form-control-sm form-pad-sm") }}
+            {{ form.lower_cnt(class="form-control  form-control-sm form-pad-sm") }}
+            {% for error in form.lower_cnt.errors %}
+              <small class="form-text text-muted ">
+                {{ error }}
+              </small>
+            {% endfor %}
+          </div>
+          <div class="form-group form-group-sm">
+            {{ form.pass_cnt.label(class="form-control-label form-control-sm form-pad-sm") }}
+            {{ form.pass_cnt(class="form-control  form-control-sm form-pad-sm") }}
+            {% for error in form.pass_cnt.errors %}
+              <small class="form-text text-muted ">
+                {{ error }}
+              </small>
+            {% endfor %}
+          </div>
+
+        </fieldset>
+        <div class="form-group form-group-sm">
+          {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+      </form>
+    </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Parameters</button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
+
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+        	<div class="col-sm-12 col-md-10 col-lg-8">
+        		<div class="table-responsive">
+              <table class="table table-bordered table-striped w-auto">
+                <thead>
+                  <tr class=text-center>
+                    <th> Password </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for pword in pwords %}
+                    <tr>
+                      <td> {{pword}} </td>
+                      <td>
+                        <!-- Trigger -->
+                        <button class="btn btn-primary" data-clipboard-text="{{pword}}"> Copy</button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/vendor/clipboard.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+  <script>
+  var clipboard = new ClipboardJS('.btn');
+
+  clipboard.on('success', function(e) {
+      console.info('Action:', e.action);
+      console.info('Text:', e.text);
+      console.info('Trigger:', e.trigger);
+
+      e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+  });
+  </script>
+
+</body>
+
+</html>
