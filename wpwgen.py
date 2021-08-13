@@ -12,10 +12,6 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
 
-from flask import flash
-from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, SubmitField, SelectField, PasswordField, IntegerField
-from wtforms.validators import DataRequired, EqualTo, NumberRange, InputRequired
 VERSION = '1.00'
 
 def gen_passwords(pass_cnt, digit_cnt, symbol_cnt, upper_cnt, lower_cnt):
@@ -51,7 +47,6 @@ def gen_passwords(pass_cnt, digit_cnt, symbol_cnt, upper_cnt, lower_cnt):
             password += i
 
         password_list.append(password)
-        print(password)
 
     return password_list
 
@@ -79,4 +74,5 @@ def about():
     return render_template('about.html', version=VERSION)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    PORT = os.environ.get('PORT', 8000)
+    app.run(host='0.0.0.0', port = PORT, debug=True)
