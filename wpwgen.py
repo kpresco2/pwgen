@@ -14,6 +14,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
 
 VERSION = '1.00'
 
+system_random = random.SystemRandom()
+
 def gen_passwords(pass_cnt, digit_cnt, symbol_cnt, upper_cnt, lower_cnt):
 
     password_list = []
@@ -26,19 +28,19 @@ def gen_passwords(pass_cnt, digit_cnt, symbol_cnt, upper_cnt, lower_cnt):
         add_ons = []
         #Digits
         for i in range(0,digit_cnt):
-            add_ons.append(digit[random.randint(0,len(digit)-1)])
+            add_ons.append(digit[system_random.randint(0,len(digit)-1)])
         # Symbols
         for i in range(0,symbol_cnt):
-            add_ons.append(symbol[random.randint(0,len(symbol)-1)])
+            add_ons.append(symbol[system_random.randint(0,len(symbol)-1)])
         # Uppercase
         for i in range(0,upper_cnt):
-            add_ons.append(uppercase[random.randint(0,len(uppercase)-1)])
+            add_ons.append(uppercase[system_random.randint(0,len(uppercase)-1)])
         # Uppercase
         for i in range(0,lower_cnt):
-            add_ons.append(lowercase[random.randint(0,len(lowercase)-1)])
+            add_ons.append(lowercase[system_random.randint(0,len(lowercase)-1)])
 
         # Shuffle the Add Ons
-        random.shuffle(add_ons)
+        system_random.shuffle(add_ons)
         # random.shuffle(add_ons)
         # random.shuffle(add_ons)
 
