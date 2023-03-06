@@ -12,7 +12,7 @@ class GetArgs(FlaskForm):
     pass_cnt = IntegerField('Number of Passwords to Generate', default=5, validators=[DataRequired("Please enter a value > 0"), NumberRange(min=1)])
     hpwords = HiddenField('Stored Passwords')
 
-    def validate(self):
+    def validate(self, extra_validators=None):
 
 #        result = super(GetArgs, self).validate()
         if not super(GetArgs, self).validate():

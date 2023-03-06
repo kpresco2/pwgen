@@ -3,3 +3,4 @@ venv
 .env
 __pycache__
 venv.3.10
+requirements.old
