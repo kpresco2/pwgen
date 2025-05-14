@@ -16,7 +16,7 @@ flask-sqlacodegen==1.1.8
 Flask-SQLAlchemy==3.0.3
 Flask-WTF==1.2.1
 greenlet==2.0.2
-gunicorn==22.0.0
+gunicorn==23.0.0
 humanfriendly==10.0
 inflect==6.0.2
 itsdangerous==2.1.2
