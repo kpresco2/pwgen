@@ -38,5 +38,5 @@ SQLAlchemy==2.0.4
 stopit==1.1.2
 typing_extensions==4.11.0
 verboselogs==1.7
-Werkzeug==3.1.4
+Werkzeug==3.1.5
 WTForms==3.0.1
